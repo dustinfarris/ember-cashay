@@ -1,4 +1,6 @@
-# Ember-cashay
+# [WIP] Ember-cashay
+
+_Not ready for production!_
 
 This README outlines the details of collaborating on this Ember addon.
 

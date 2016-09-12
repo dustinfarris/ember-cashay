@@ -2,5 +2,9 @@
 'use strict';
 
 module.exports = {
-  name: 'ember-cashay'
+  name: 'ember-cashay',
+
+  isDevelopingAddon: function() {
+    return true;
+  }
 };
