@@ -1,29 +1,15 @@
-# [WIP] Ember-cashay
+# [WIP] ember-cashay
 
 _Not ready for production!_
 
-This README outlines the details of collaborating on this Ember addon.
+Use [Cashay](https://github.com/mattkrick/cashay) in your Ember project.
 
 ## Installation
 
-* `git clone <repository-url>` this repository
-* `cd ember-cashay`
-* `npm install`
-* `bower install`
+```
+ember install ember-cashay
+```
 
-## Running
+## License
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-
-## Running Tests
-
-* `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
-
-## Building
-
-* `ember build`
-
-For more information on using ember-cli, visit [http://ember-cli.com/](http://ember-cli.com/).
+MIT
