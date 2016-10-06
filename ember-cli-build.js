@@ -1,10 +1,16 @@
 /*jshint node:true*/
 /* global require, module */
+var path = require('path');
 var EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 
 module.exports = function(defaults) {
   var app = new EmberAddon(defaults, {
-    // Add options here
+    'ember-cashay': {
+      rootDirectory: path.join('tests', 'dummy')
+    },
+    babel: {
+      includePolyfill: true
+    }
   });
 
   /*
@@ -13,6 +19,5 @@ module.exports = function(defaults) {
     This build file does *not* influence how the addon or the app using it
     behave. You most likely want to be modifying `./index.js` or app's build file
   */
-
   return app.toTree();
 };
