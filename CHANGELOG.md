@@ -5,4 +5,4 @@
 
 - [#1](https://github.com/dustinfarris/ember-cashay/pull/1)
   Initial implementation
-  @dustinfarris
+  [@dustinfarris](https://github.com/dustinfarris)
