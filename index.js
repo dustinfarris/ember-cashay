@@ -40,7 +40,7 @@ module.exports = {
 
     // Get the path to the graphql schema
     // DEFAULT: graphql/schema.js
-    this.graphqlDir = this.addonConfig['graphqlDir'] || 'graphql';
+    this.graphqlDir = this.addonBuildConfig['serverSchemaDirectory'] || 'graphql';
     this.graphqlDir = path.join(rootDirectory, this.graphqlDir);
     this.graphqlSchemaPath = path.join(this.graphqlDir, 'schema.js');
 
