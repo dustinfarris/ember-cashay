@@ -35,9 +35,9 @@ export default class HTTPTransport extends npmCashay.HTTPTransport {
         method: 'POST'
       });
       return new Promise(resolve => {
-        if (jQuery) {
+        if (window.jQuery) {
           // Trigger ajaxSend so ember-testing knows there is an outstanding network request
-          jQuery(document).trigger('ajaxSend', 'ember-cashay');
+          window.jQuery(document).trigger('ajaxSend', 'ember-cashay');
         }
         fetch(this.uri, payload).then(result => {
           const { status, statusText } = result;
@@ -52,9 +52,9 @@ export default class HTTPTransport extends npmCashay.HTTPTransport {
             });
           }
         }).finally(() => {
-          if (jQuery) {
+          if (window.jQuery) {
             // Trigger ajaxComplete so ember-testing knows the request is finished
-            jQuery(document).trigger('ajaxComplete', 'ember-cashay');
+            window.jQuery(document).trigger('ajaxComplete', 'ember-cashay');
           }
         });
       });

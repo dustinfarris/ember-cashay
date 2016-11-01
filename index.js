@@ -57,7 +57,7 @@ module.exports = {
 
     // Add the server schema (non-prod)
     if (this.app.env !== 'production') {
-      var serverTree = new Funnel('tests/dummy/graphql', {
+      var serverTree = new Funnel(this.graphqlDir, {
         destDir: this.serverOutputDir
       });
       trees.push(serverTree);
