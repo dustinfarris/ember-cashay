@@ -11,7 +11,7 @@ export default function() {
 
   Logger.debug(graphqlSchema);
 
-  this.post('/graphql', (mirageSchema, { requestBody }) => {
+  this.post('/test-graphql', (mirageSchema, { requestBody }) => {
     const { query, variables } = JSON.parse(requestBody);
     return new Promise(resolve => {
       variables.mirage = mirageSchema;

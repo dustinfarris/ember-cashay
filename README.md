@@ -25,10 +25,45 @@ var app = new EmberApp({
 });
 ```
 
+If everything went well, you should have a GraphQL schema in `graphql/schema.js`.  Tailor this to suit your requirements.
+
 
 ## Configuration
 
-Work in progress.
+
+### GraphQL Endpoint
+
+You'll want to configure the GraphQL endpoint URL for your environment.
+
+The default is `/graphql`.
+
+Example:
+
+```js
+// config/environment.js
+...
+if (environment === 'production') {
+  ENV['ember-cashay'] = {
+    'graphql-endpoint': 'https://example.com/graphql'
+  }
+}
+```
+
+
+### Schema Location
+
+If for some reason you don't like having your server schema in a `graphql/` directory, you can override this in your ember-cli-build.js.  ember-cashay will look for a `schema.js` in whatever directory you provide.
+
+Example (if you wanted to keep the schema in `server/schema.js` instead):
+
+```js
+// ember-cli-build.js
+var app = new EmberApp({
+  'ember-cashay': {
+    serverSchemaDirectory: 'server'
+  }
+});
+```
 
 
 ## Usage
