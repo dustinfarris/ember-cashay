@@ -19,7 +19,8 @@ module.exports = function(environment) {
     },
 
     'ember-cashay': {
-      'graphql-endpoint': '/test-graphql'
+      'graphql-endpoint': '/test-graphql',
+      'schema-directory': 'graphql'
     }
   };
 

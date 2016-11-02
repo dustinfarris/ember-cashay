@@ -4,7 +4,8 @@
 module.exports = function(/* environment, appConfig */) {
   return {
     'ember-cashay': {
-      'graphql-endpoint': '/graphql'
+      'graphql-endpoint': '/graphql',
+      'schema-directory': 'graphql'
     }
   };
 };

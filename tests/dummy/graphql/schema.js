@@ -4,7 +4,6 @@ export default function(graphql) {
     GraphQLSchema,
     GraphQLObjectType,
     GraphQLString,
-    GraphQLNonNull,
     GraphQLID
   } = graphql;
 
