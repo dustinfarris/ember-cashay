@@ -3,6 +3,10 @@
 
 ## Master
 
+- [#6](https://github.com/dustinfarris/ember-cashay/pull/6)
+  Bump broccoli-cashay-schema to v0.2.4
+  [@dustinfarris](https://github.com/dustinfarris)
+
 
 ## 0.1.0
 
