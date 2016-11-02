@@ -51,7 +51,7 @@
   ],
   "dependencies": {
     "babel-runtime": "^6.18.0",
-    "broccoli-cashay-schema": "^0.2.3",
+    "broccoli-cashay-schema": "^0.2.4",
     "broccoli-funnel": "^1.0.7",
     "broccoli-merge-trees": "^1.1.4",
     "ember-cli-babel": "^5.1.6",
