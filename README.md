@@ -63,6 +63,19 @@ ENV['ember-cashay'] = {
 ```
 
 
+### Copy server schema
+
+By default, ember-cashay will copy your server schema to the app build in non-production environments.  This allows you to use the schema to mock a backend server using Mirage or something similar.
+
+If you want to force ember-cashay to copy the schema even in production (e.g. for a Twiddle), set `copy-server-schema` to true.
+
+```js
+ENV['ember-cashay'] = {
+  'copy-server-schema': true
+}
+```
+
+
 ## Usage
 
 Once installed, you can use Cashay anywhere.

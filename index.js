@@ -56,7 +56,8 @@ module.exports = {
     var trees = [ appTree ];
 
     // Add the server schema (non-prod)
-    if (this.app.env !== 'production') {
+    // TODO: Make the check for `enabled` respect explicit `false`
+    if (this.app.env !== 'production' || this.addonConfig['copy-server-schema']) {
       var serverTree = new Funnel(this.graphqlDir, {
         destDir: this.serverOutputDir
       });
