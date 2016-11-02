@@ -3,6 +3,9 @@
 
 ## Master
 
+
+## 0.1.0
+
 - [#5](https://github.com/dustinfarris/ember-cashay/pull/5)
   Configuration support
   [@dustinfarris](https://github.com/dustinfarris)

@@ -11,7 +11,7 @@ module.exports = {
   name: 'ember-cashay',
 
   isDevelopingAddon: function() {
-    return true;
+    return false;
   },
 
   included: function(app) {
