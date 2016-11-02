@@ -52,17 +52,14 @@ if (environment === 'production') {
 
 ### Schema Location
 
-If for some reason you don't like having your server schema in a `graphql/` directory, you can override this in your ember-cli-build.js.  ember-cashay will look for a `schema.js` in whatever directory you provide.
+If for some reason you don't like having your server schema in a `graphql/` directory, you can override this in the 'schema-directory' setting.  ember-cashay will look for a `schema.js` in whatever directory you provide.
 
 Example (if you wanted to keep the schema in `server/schema.js` instead):
 
 ```js
-// ember-cli-build.js
-var app = new EmberApp({
-  'ember-cashay': {
-    serverSchemaDirectory: 'server'
-  }
-});
+ENV['ember-cashay'] = {
+  'schema-directory': 'server'
+}
 ```
 
 
