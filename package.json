@@ -57,7 +57,7 @@
     "ember-fetch": "1.3.0"
   },
   "peerDependencies": {
-    "cashay": "^0.20.12",
+    "cashay": "^0.21.0",
     "ember-browserify": "^1.1.13",
     "ember-redux": "^1.7.0",
     "graphql": "^0.7.1",
