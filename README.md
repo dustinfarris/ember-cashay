@@ -20,7 +20,7 @@ PhantomJS has limited support for certain ES6 features that are used by Cashay. 
 
 var app = new EmberApp({
   babel: {
-    includePolyfill: true
+    includePolyfill: EmberApp.env() === 'test'
   }
 });
 ```

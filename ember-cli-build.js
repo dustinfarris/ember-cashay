@@ -9,7 +9,7 @@ module.exports = function(defaults) {
       rootDirectory: path.join('tests', 'dummy')
     },
     babel: {
-      includePolyfill: true
+      includePolyfill: EmberAddon.env() === 'test'
     }
   });
 
