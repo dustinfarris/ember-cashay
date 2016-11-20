@@ -38,7 +38,7 @@
     "ember-disable-prototype-extensions": "^1.1.0",
     "ember-export-application-global": "^1.0.5",
     "ember-load-initializers": "^0.5.1",
-    "ember-redux": "dustinfarris/ember-redux#ember-run",
+    "ember-redux": "^1.9.0",
     "ember-resolver": "^2.0.3",
     "graphql": "^0.7.1",
     "loader.js": "^4.0.10",
