@@ -3,9 +3,11 @@
 
 var Funnel = require('broccoli-funnel');
 var cashaySchema = require('broccoli-cashay-schema');
+var esTranspiler = require('broccoli-babel-transpiler');
 var mergeTrees = require('broccoli-merge-trees');
 var path = require('path');
 var graphql = require('graphql');
+var cashay = require('cashay');
 
 module.exports = {
   name: 'ember-cashay',
@@ -38,18 +40,17 @@ module.exports = {
       rootDirectory = app.project.root;
     }
 
-    // Get the path to the graphql schema
-    // DEFAULT: graphql/schema.js
+    // Get the directory of the user-provided graphql schema
+    // DEFAULT: graphql-server
     this.graphqlDir = this.addonConfig['schema-directory'];
     this.graphqlDir = path.join(rootDirectory, this.graphqlDir);
-    this.graphqlSchemaPath = path.join(this.graphqlDir, 'schema.js');
 
     // Get the (app prefixed) output dir for the client-safe schema
-    // DEFAULT: graphql/client
-    this.clientOutputDir = this.addonConfig['clientOutputDir'] || path.join('graphql', 'client');
+    // DEFAULT: app/graphql-client
+    this.clientOutputDir = this.addonConfig['clientOutputDir'] || 'graphql-client';
     // Get the (app prefixed) output dir for the server schema (non-prod only)
-    // DEFAULT: graphql/server
-    this.serverOutputDir = this.addonConfig['serverOutputDir'] || path.join('graphql', 'server');
+    // DEFAULT: app/graphql-server
+    this.serverOutputDir = this.addonConfig['serverOutputDir'] || 'graphql-server';
   },
 
   treeForApp: function(appTree) {
@@ -65,12 +66,11 @@ module.exports = {
     }
 
     // Add the client-safe schema
-    var clientTree = cashaySchema(
-      graphql,
-      this.graphqlSchemaPath,
-      path.join(this.clientOutputDir, 'schema.js'),
-      { watchNode: appTree }
-    );
+    var clientTree = cashaySchema(esTranspiler(this.graphqlDir), {
+      cashay: cashay,
+      graphql: graphql,
+      clientSchemaPath: path.join(this.clientOutputDir, 'schema.js')
+    });
     trees.push(clientTree);
 
     return mergeTrees(trees);

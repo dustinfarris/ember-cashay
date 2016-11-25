@@ -1,5 +1,5 @@
 import npmCashay from 'npm:cashay';
-import schema from '../graphql/client/schema';
+import schema from '../graphql-client/schema';
 import HTTPTransport from 'ember-cashay/http-transport';
 import ENV from '../config/environment';
 
