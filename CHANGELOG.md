@@ -3,6 +3,24 @@
 
 ## Master
 
+- [#15](https://github.com/dustinfarris/ember-cashay/pull/15)
+  Bump broccoli-cashay-schema to v0.3.0
+  [@dustinfarris](https://github.com/dustinfarris)
+- [#14](https://github.com/dustinfarris/ember-cashay/pull/14)
+  Drop babel-runtime
+  [@dustinfarris](https://github.com/dustinfarris)
+- [#11](https://github.com/dustinfarris/ember-cashay/pull/11)
+  Bump cashay and ember-redux versions
+  [@dustinfarris](https://github.com/dustinfarris)
+- [#9](https://github.com/dustinfarris/ember-cashay/pull/9)
+  Add copy-server-schema config
+  [@dustinfarris](https://github.com/dustinfarris)
+- [#8](https://github.com/dustinfarris/ember-cashay/pull/8)
+  Upgrade ember-cli to v2.9.1
+  [@dustinfarris](https://github.com/dustinfarris)
+- [#7](https://github.com/dustinfarris/ember-cashay/pull/7)
+  Use addon config for schema directory
+  [@dustinfarris](https://github.com/dustinfarris)
 - [#6](https://github.com/dustinfarris/ember-cashay/pull/6)
   Bump broccoli-cashay-schema to v0.2.4
   [@dustinfarris](https://github.com/dustinfarris)
