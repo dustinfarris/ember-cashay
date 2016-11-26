@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import buildSchema from '../graphql/server/schema';
+import buildSchema from '../graphql-server/schema';
 import npmGraphql from 'npm:graphql';
 import { Response } from 'ember-cli-mirage';
 

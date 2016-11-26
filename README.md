@@ -4,6 +4,8 @@
 
 Use [Cashay](https://github.com/mattkrick/cashay) in your Ember project.
 
+This is pre-1.0.  Things may move around with little notice.
+
 
 ## Installation
 
@@ -25,7 +27,7 @@ var app = new EmberApp({
 });
 ```
 
-If everything went well, you should have a GraphQL schema in `graphql/schema.js`.  Tailor this to suit your requirements.
+If everything went well, you should have a GraphQL schema in `graphql-server/schema.js`.  Tailor this to suit your requirements.
 
 
 ## Configuration
@@ -52,7 +54,7 @@ if (environment === 'production') {
 
 ### Schema Location
 
-If for some reason you don't like having your server schema in a `graphql/` directory, you can override this in the 'schema-directory' setting.  ember-cashay will look for a `schema.js` in whatever directory you provide.
+If for some reason you don't like having your server schema in a `graphql-server/` directory, you can override this in the 'schema-directory' setting.  ember-cashay will look for a `schema.js` in whatever directory you provide.
 
 Example (if you wanted to keep the schema in `server/schema.js` instead):
 
