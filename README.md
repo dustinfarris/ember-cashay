@@ -97,6 +97,15 @@ const { cashay } = npmCashay;
 let { users } = cashay.query(`{ users { id, name } }`).data;
 ```
 
+## Thank you!
+
+This project is the glue, the real work was done on these incredible projects:
+
+- [cashay](https://github.com/mattkrick/cashay) by [@mattkrick](https://github.com/mattkrick)
+- [ember-redux](https://github.com/toranb/ember-redux) by [@toranb](https://github.com/toranb)
+- [ember-cli-mirage](https://github.com/samselikoff/ember-cli-mirage) by [@samselikoff](https://github.com/samselikoff)
+- and everyone who contributed to these projects and everyone at Facebook for giving use Redux and GraphQL!
+
 
 ## License
 
