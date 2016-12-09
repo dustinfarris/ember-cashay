@@ -3,6 +3,9 @@
 
 ## Master
 
+
+## 0.3.0
+
 - [#20](https://github.com/dustinfarris/ember-cashay/pull/20)
   CRUD tests
   [@dustinfarris](https://github.com/dustinfarris)
