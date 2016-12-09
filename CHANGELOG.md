@@ -3,6 +3,16 @@
 
 ## Master
 
+- [#20](https://github.com/dustinfarris/ember-cashay/pull/20)
+  CRUD tests
+  [@dustinfarris](https://github.com/dustinfarris)
+- [#18](https://github.com/dustinfarris/ember-cashay/pull/18)
+  Update dependencies
+  [@dustinfarris](https://github.com/dustinfarris)
+- [#17](https://github.com/dustinfarris/ember-cashay/pull/17)
+  Update dependencies
+  [@dustinfarris](https://github.com/dustinfarris)
+
 
 ## 0.2.0
 
