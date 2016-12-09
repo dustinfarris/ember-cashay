@@ -4,7 +4,7 @@
 
 Use [Cashay](https://github.com/mattkrick/cashay) in your Ember project.
 
-If you're looking for an all-in-one Ember+Redux+GraphQL solution, this is for you.  Cashay accepts GraphQL queries and checks for the data in Redux.  If the data isn't there, it sends a GraphQL network request to your backend API, and stores the result in Redux.  It is surprisingly simple.
+If you're looking for an all-in-one Ember+Redux+GraphQL solution, this is for you.  Cashay accepts GraphQL queries and checks for the data in Redux.  If the data isn't there, it sends a GraphQL network request to your backend API, and stores the result in Redux.  It's just that simple.
 
 _Note: ember-cashay is pre-1.0.  Things may move around with little notice._
 
@@ -56,16 +56,18 @@ import npmCashay from '../npm-shims/cashay';
 const { Component } = Ember;
 const { cashay } = npmCashay;
 
-const stateToComputed = () => {
-  const usersQuery = `
-  {
-    users {
-      id
-      name
-    }
-  }
-  `;
 
+const usersQuery = `
+{
+  users {
+    id
+    name
+  }
+}
+`;
+
+
+const stateToComputed = () => {
   const {
     data: { users },
     status
@@ -77,22 +79,26 @@ const stateToComputed = () => {
   };
 };
 
+
 const UsersListComponent = Component.extend({
   layout: hbs`
-{{#if isLoading}}
-  <h6>Loading ...</h6>
-{{else}}
-  {{#each users as |user|}}
-    <div>
-      {{link-to user.name "user" user.id}}
-    </div>
-  {{/each}}
-{{/if}}
-`
+    {{#if isLoading}}
+      <h6>Loading ...</h6>
+    {{else}}
+      {{#each users as |user|}}
+        <div>
+          {{link-to user.name "user" user.id}}
+        </div>
+      {{/each}}
+    {{/if}}
+  `
 });
+
 
 export default connect(stateToComputed)(UsersListComponent);
 ```
+
+There's a lot more you can do with Cashay.  For instance, Cashay will write your mutations for you!
 
 See additional examples on the [ember-cashay Twiddle demo](https://ember-twiddle.com/f2a8a4123c65c4871a885444978efe65?openFiles=components.users-list.js%2C)!
 
