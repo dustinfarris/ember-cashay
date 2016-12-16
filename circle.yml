@@ -4,11 +4,9 @@ machine:
 
 dependencies:
   pre:
+    - npm config set spin false
     - npm install -g bower
+    - bower --version
   post:
     - npm install
     - bower install
-
-test:
-  override:
-    - npm test
