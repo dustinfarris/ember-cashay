@@ -1,6 +1,6 @@
 {
   "name": "ember-cashay",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Ember + Redux + GraphQL",
   "keywords": [
     "ember-addon"
