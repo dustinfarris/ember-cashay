@@ -1,7 +1,15 @@
 # ember-cashay Changelog
 
 
-## Master
+## Current
+
+- [#25](https://github.com/dustinfarris/ember-cashay/pull/25)
+  Upgrade to ember-cli 2.10.0
+  [@dustinfarris](https://github.com/dustinfarris)
+- [#24](https://github.com/dustinfarris/ember-cashay/pull/24)
+  Drop browserify
+  [@dustinfarris](https://github.com/dustinfarris)
+
 
 
 ## 0.3.0
