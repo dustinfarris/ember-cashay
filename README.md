@@ -25,18 +25,12 @@ If everything went well, you should have a GraphQL schema in `graphql-server/sch
 
 Once installed, you can use Cashay anywhere.
 
-Import Cashay using browserify:
-
-```js
-import npmCashay from 'npm:cashay';
-
-const { cashay } = npmCashay;
-```
-
 
 ### Example query
 
 ```js
+import { cashay } from 'cashay';
+
 let { users } = cashay.query(`{ users { id, name } }`).data;
 ```
 
@@ -51,10 +45,9 @@ Once you get the hang of GraphQL queries, you'll want to start connecting the da
 import Ember from 'ember';
 import hbs from 'htmlbars-inline-precompile';
 import connect from 'ember-redux/components/connect';
-import npmCashay from '../npm-shims/cashay';
+import { cashay } from 'cashay';
 
 const { Component } = Ember;
-const { cashay } = npmCashay;
 
 
 const usersQuery = `

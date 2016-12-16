@@ -1,9 +1,7 @@
-import npmCashay from 'npm:cashay';
+import { cashay } from 'cashay';
 import schema from '../graphql-client/schema';
 import HTTPTransport from 'ember-cashay/http-transport';
 import ENV from '../config/environment';
-
-const { cashay } = npmCashay;
 
 export function startCashay(appInstance) {
   const graphqlEndpoint = ENV['ember-cashay']['graphql-endpoint'];
