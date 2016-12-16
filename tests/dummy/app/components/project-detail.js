@@ -1,10 +1,9 @@
 import Ember from 'ember';
 import hbs from 'htmlbars-inline-precompile';
 import connect from 'ember-redux/components/connect';
-import npmCashay from 'npm:cashay';
+import { cashay } from 'cashay';
 
 const { Component, Logger } = Ember;
-const { cashay } = npmCashay;
 
 const projectQuery = `
   {

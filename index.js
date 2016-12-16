@@ -4,10 +4,10 @@
 var Funnel = require('broccoli-funnel');
 var cashaySchema = require('broccoli-cashay-schema');
 var esTranspiler = require('broccoli-babel-transpiler');
-var mergeTrees = require('broccoli-merge-trees');
+var merge = require('broccoli-merge-trees');
 var path = require('path');
-var graphql = require('graphql');
-var cashay = require('cashay');
+
+var WebpackWriter = require('broccoli-webpack');
 
 module.exports = {
   name: 'ember-cashay',
@@ -21,6 +21,9 @@ module.exports = {
     if (typeof(app.import) !== 'function' && app.app) {
       app = app.app;
     }
+
+    app.import('vendor/cashay.amd.js');
+
     this.app = app;
 
     // Get build config from ember-cli-build.js
@@ -67,12 +70,34 @@ module.exports = {
 
     // Add the client-safe schema
     var clientTree = cashaySchema(esTranspiler(this.graphqlDir), {
-      cashay: cashay,
-      graphql: graphql,
+      cashay: require('cashay'),
+      graphql: require('graphql'),
       clientSchemaPath: path.join(this.clientOutputDir, 'schema.js')
     });
     trees.push(clientTree);
 
-    return mergeTrees(trees);
+    return merge(trees);
+  },
+
+  treeForVendor: function(tree) {
+    const cashayPath = path.dirname(require.resolve('cashay'));
+    const cashayTree = new WebpackWriter([ cashayPath ], {
+      entry: './index.js',
+      output: {
+        library: 'cashay',
+        libraryTarget: 'amd',
+        filename: 'cashay.amd.js',
+      }
+    });
+
+    if (!tree) {
+      return this._super.treeForVendor.call(this.cashayTree);
+    }
+
+    const trees = merge([cashayTree, tree], {
+      overwrite: true
+    });
+
+    return this._super.treeForVendor.call(this, trees);
   }
 };

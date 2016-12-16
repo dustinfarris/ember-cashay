@@ -1,8 +1,6 @@
 import { test } from 'qunit';
 import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
-import npmCashay from 'npm:cashay';
-
-const { cashay } = npmCashay;
+import { cashay } from 'cashay';
 
 moduleForAcceptance('Acceptance | CRUD', {
   afterEach() {

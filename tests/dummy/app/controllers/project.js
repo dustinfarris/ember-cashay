@@ -1,8 +1,7 @@
 import Ember from 'ember';
-import npmCashay from 'npm:cashay';
+import { cashay } from 'cashay';
 
 const { Controller, Logger } = Ember;
-const { cashay } = npmCashay;
 
 export default Controller.extend({
   actions: {

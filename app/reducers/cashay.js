@@ -1,5 +1,3 @@
-import npmCashay from 'npm:cashay';
-
-const { cashayReducer } = npmCashay;
+import { cashayReducer } from 'cashay';
 
 export default cashayReducer;

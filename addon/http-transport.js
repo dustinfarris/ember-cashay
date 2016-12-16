@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import npmCashay from 'npm:cashay';
+import { cashay, HTTPTransport as CashayTransport } from 'cashay';
 import fetch from 'fetch';
 
 const { RSVP: { Promise } } = Ember;
@@ -22,7 +22,7 @@ const { RSVP: { Promise } } = Ember;
  * When ember-cli-mirage's dependency, Pretender, gets fetch support, this
  * class can likely be removed.
  */
-export default class HTTPTransport extends npmCashay.HTTPTransport {
+export default class HTTPTransport extends CashayTransport {
   constructor(...args) {
     super(...args);
     this.sendToServer = (request) => {
