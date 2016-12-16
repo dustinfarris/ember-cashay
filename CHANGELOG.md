@@ -3,6 +3,13 @@
 
 ## Current
 
+- [#26](https://github.com/dustinfarris/ember-cashay/pull/26)
+  Fix typo in treeForVendor
+  [@dustinfarris](https://github.com/dustinfarris)
+
+
+## 0.5.0
+
 - [#25](https://github.com/dustinfarris/ember-cashay/pull/25)
   Upgrade to ember-cli 2.10.0
   [@dustinfarris](https://github.com/dustinfarris)
