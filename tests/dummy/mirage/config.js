@@ -1,11 +1,9 @@
 import Ember from 'ember';
-import buildSchema from '../graphql-server/schema';
-import npmGraphql from 'npm:graphql';
+import graphqlSchema from '../graphql-server/schema';
+import { graphql } from 'graphql';
 import { Response } from 'ember-cli-mirage';
 
 const { Logger, RSVP: { Promise } } = Ember;
-const graphqlSchema = buildSchema(npmGraphql);
-const { graphql } = npmGraphql;
 
 export default function() {
 

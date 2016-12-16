@@ -6,8 +6,6 @@ var cashaySchema = require('broccoli-cashay-schema');
 var esTranspiler = require('broccoli-babel-transpiler');
 var merge = require('broccoli-merge-trees');
 var path = require('path');
-var graphql = require('graphql');
-var cashay = require('cashay');
 
 var WebpackWriter = require('broccoli-webpack');
 
@@ -72,8 +70,8 @@ module.exports = {
 
     // Add the client-safe schema
     var clientTree = cashaySchema(esTranspiler(this.graphqlDir), {
-      cashay: cashay,
-      graphql: graphql,
+      cashay: require('cashay'),
+      graphql: require('graphql'),
       clientSchemaPath: path.join(this.clientOutputDir, 'schema.js')
     });
     trees.push(clientTree);
@@ -83,24 +81,8 @@ module.exports = {
 
   treeForVendor: function(tree) {
     const cashayPath = path.dirname(require.resolve('cashay'));
-    const cashayNode = esTranspiler(cashayPath, {
-      babel: {
-        presets: ['stage-1']
-      }
-    });
     const cashayTree = new WebpackWriter([ cashayPath ], {
       entry: './index.js',
-      modules: {
-        /*
-        loaders: [{
-          test: /\.js$/,
-          loaders: ['babel-loader'],
-          query: {
-            presets: ['stage-1']
-          }
-        }]
-        */
-      },
       output: {
         library: 'cashay',
         libraryTarget: 'amd',

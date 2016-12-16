@@ -1,53 +1,51 @@
-export default function(graphql) {
-  const {
-    GraphQLObjectType,
-    GraphQLSchema,
-    GraphQLString
-  } = graphql;
+import {
+  GraphQLObjectType,
+  GraphQLSchema,
+  GraphQLString
+} from 'graphql';
 
-  /* Add your object types here
+/* Add your object types here
 
-  // Example:
+// Example:
 
-  const User = new GraphQLObjectType({
-    name: 'User',
-    description: 'A user',
-    fields: {
-      id: { type: GraphQLID },
-      name: { type: GraphQLString }
-    }
-  });
+const User = new GraphQLObjectType({
+  name: 'User',
+  description: 'A user',
+  fields: {
+    id: { type: GraphQLID },
+    name: { type: GraphQLString }
+  }
+});
 
-  */
+*/
 
-  const query = new GraphQLObjectType({
-    name: 'RootQueryType',
-    fields: {
-      /* Add your query fields here */
+const query = new GraphQLObjectType({
+  name: 'RootQueryType',
+  fields: {
+    /* Add your query fields here */
 
-      // Example:
+    // Example:
 
-      hello: {
-        type: GraphQLString,
-        resolve() {
-          return 'world';
-        }
+    hello: {
+      type: GraphQLString,
+      resolve() {
+        return 'world';
       }
-
-      /*
-
-      // Example using Mirage and the User type above
-
-      users: {
-        type: new GraphQLList(User),
-        resolve: (_parent, _args, { mirage }) => {
-          return mirage.users.all().models.map(model => model.attrs);
-        }
-      }
-
-      */
     }
-  });
 
-  return new GraphQLSchema({ query });
-}
+    /*
+
+    // Example using Mirage and the User type above
+
+    users: {
+      type: new GraphQLList(User),
+      resolve: (_parent, _args, { mirage }) => {
+        return mirage.users.all().models.map(model => model.attrs);
+      }
+    }
+
+    */
+  }
+});
+
+export default new GraphQLSchema({ query });
