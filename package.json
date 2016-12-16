@@ -14,6 +14,8 @@
   "repository": "https://github.com/dustinfarris/ember-cashay",
   "scripts": {
     "build": "ember build",
+    "postversion": "git push && git push --tags",
+    "preversion": "git checkout master && git pull && npm test",
     "start": "ember server",
     "test": "ember try:each"
   },
