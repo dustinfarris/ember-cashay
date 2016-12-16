@@ -91,7 +91,7 @@ module.exports = {
     });
 
     if (!tree) {
-      return this._super.treeForVendor.call(this.cashayTree);
+      return this._super.treeForVendor.call(this, cashayTree);
     }
 
     const trees = merge([cashayTree, tree], {
