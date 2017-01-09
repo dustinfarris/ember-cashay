@@ -1,12 +1,24 @@
 machine:
   node:
     version: "stable"
+  environment:
+    YARN_VERSION: 0.18.1
+    PATH: "${PATH}:${HOME}/.yarn/bin:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
 
 dependencies:
   pre:
-    - npm config set spin false
-    - npm install -g bower
-    - bower --version
-  post:
-    - npm install
+    - |
+      if [[ ! -e ~/.yarn/bin/yarn || $(yarn --version) != "${YARN_VERSION}" ]]; then
+        curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version $YARN_VERSION
+      fi
+    - yarn global add bower
+  cache_directories:
+    - ~/.yarn
+    - ~/.cache/yarn
+  override:
+    - yarn install
     - bower install
+
+test:
+  override:
+    - yarn test
