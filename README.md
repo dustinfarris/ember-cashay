@@ -144,23 +144,12 @@ ENV['ember-cashay'] = {
 ```
 
 
-## Testing with PhantomJS
+## Running tests
 
-PhantomJS has limited support for certain ES6 features that are used by Cashay.  If you plan to use PhantomJS for testing, you will need to add the babel polyfill to your ember-cli-build.js:
-
-```js
-// ember-cli-build.js
-
-var app = new EmberApp({
-  babel: {
-    includePolyfill: EmberApp.env() === 'test'
-  }
-});
 ```
-
-## FYI
-
-ember-cashay and ember-redux rely on browserify to load npm packages.  For browserify to work, the host Ember app (your app) must explicitly install the dependencies.  When you `ember install ember-cashay`, this is done for you.
+yarn install && bower install
+yarn test
+```
 
 
 ## Thank you!
