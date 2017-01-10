@@ -7,10 +7,10 @@ const { Component, Logger } = Ember;
 
 const projectQuery = `
   {
-    project(id: $project_id) {
+    project (id: $project_id) @live {
       id
       name
-      todos {
+      projectTodos @live {
         id
         createdAt
         description
@@ -27,8 +27,10 @@ const stateToComputed = (state, attrs) => {
     mutationHandlers: {
       updateProject(optimisticVariables, queryResponse, currentResponse) {
         Logger.debug('ProjectDetail updateProject mutation handler firing');
-        if (queryResponse) {
-          currentResponse.project = queryResponse;
+        if (optimisticVariables) {
+          currentResponse.project = Object.assign({},
+            currentResponse.project, optimisticVariables
+          );
           return currentResponse;
         }
       }
@@ -46,13 +48,15 @@ const ProjectDetailComponent = Component.extend({
 
     <h3>Todos</h3>
     <ul class="project-todos">
-      {{#each project.todos as |todo|}}
+      {{#each project.projectTodos as |todo|}}
         <li class="todo">
           <p>{{todo.description}}</p>
           <div><small>{{todo.createdAt}}</small></div>
         </li>
       {{/each}}
     </ul>
+
+    {{create-todo-form project=project}}
   `
 });
 

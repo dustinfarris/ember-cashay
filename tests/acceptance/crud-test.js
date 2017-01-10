@@ -1,12 +1,8 @@
 import { test } from 'qunit';
-import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
-import { cashay } from 'cashay';
+import { moduleForAcceptance } from '../../tests/helpers/cashay';
 
-moduleForAcceptance('Acceptance | CRUD', {
-  afterEach() {
-    cashay.clear();
-  }
-});
+
+moduleForAcceptance('Acceptance | CRUD');
 
 
 // CREATE
@@ -18,7 +14,7 @@ test('creating a project', function(assert) {
   fillIn('.project-form .name', 'Chores');
   click('.project-form .submit');
 
-  andThen(function() {
+  andThen(() => {
     assert.equal(find('.project').length, 1, 'a new project should be rendered');
     assert.equal(server.db.projects[0].name, 'Chores', 'project record should be persisted to database');
   });
@@ -30,12 +26,13 @@ test('creating a project', function(assert) {
 test('reading a list of projects', function(assert) {
   server.createList('project', 10);
 
-  visit('/');
+  visit(`/`);
 
   andThen(function() {
     assert.equal(find('.project').length, 10);
   });
 });
+
 
 test('viewing project details', function(assert) {
   const project1 = server.create('project', { name: 'IndustryMaps' });
@@ -43,22 +40,25 @@ test('viewing project details', function(assert) {
   server.createList('todo', 3, { project: project1 });
   server.createList('todo', 5, { project: project2 });
 
-  visit('/');
+  visit(`/`);
 
   click('a:contains(IndustryMaps)');
 
-  andThen(function() {
+  andThen(() => {
     assert.equal(find('.project-name').text(), 'IndustryMaps', 'query details should be rendered');
     assert.equal(find('.project-todos .todo').length, 3, 'sub-query details should be rendered');
   });
 
+
   click('a:contains(Home)');
+
   click('a:contains(Progress Partners)');
 
-  andThen(function() {
+  andThen(() => {
     assert.equal(find('.project-name').text(), 'Progress Partners', 'new query details should be rendered');
     assert.equal(find('.project-todos .todo').length, 5, 'new sub-query details should be rendered');
   });
+
 });
 
 
@@ -83,6 +83,7 @@ test('editing a project', function(assert) {
   andThen(function() {
     assert.equal(find('a:contains(Chores)').length, 1, 'all relevant queries should update');
   });
+
 });
 
 
