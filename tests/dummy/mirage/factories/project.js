@@ -5,7 +5,7 @@ export default Factory.extend({
 
   withTodos: trait({
     afterCreate(project, server) {
-      server.createList('todo', 10, { project });
+      server.createList('todo', 3, { project });
     }
   })
 });

@@ -91,6 +91,40 @@ const UsersListComponent = Component.extend({
 export default connect(stateToComputed)(UsersListComponent);
 ```
 
+### Subscriptions
+
+How you manage subscription data is up to you, but Cashay makes it easier by providing the `@live` decorator.
+
+To use it, you will define:
+
+- Your priority transport (probably some kind of websocket connection)
+- How data received on channels should be handled
+- Which fields on your queries subscribe to live data
+
+See the dummy app for an example of doing this with a mock websocket server.
+
+Your queries will end up looking like this when all is said and done:
+
+```js
+const projectQuery = `
+{
+  project (id: $project_id) @live {
+    id
+    title
+    description
+    todos @live {
+      id
+      name
+    }
+  }
+}
+`;
+```
+
+That's it!  Cashay will run your subscriber function to compute an appropriate channel name and key, and start updating the query result as new data comes in.  See the Cashay docs for more details.
+
+Note that you don't have to use GraphQL subscriptions for this to work (although you can if you want!).  You can memoize and optimize to your heart's content, or not.
+
 There's a lot more you can do with Cashay.  For instance, Cashay will write your mutations for you!
 
 See additional examples on the [ember-cashay Twiddle demo](https://ember-twiddle.com/f2a8a4123c65c4871a885444978efe65?openFiles=components.users-list.js%2C)!

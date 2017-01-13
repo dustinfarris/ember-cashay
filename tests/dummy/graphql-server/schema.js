@@ -8,7 +8,8 @@ import {
   GraphQLNonNull
 } from 'graphql';
 
-// QUERIES
+
+// TYPES
 
 const Project = new GraphQLObjectType({
   name: 'Project',
@@ -16,10 +17,10 @@ const Project = new GraphQLObjectType({
   fields: () => ({
     id: { type: GraphQLID },
     name: { type: GraphQLString },
-    todos: {
+    projectTodos: {
       type: new GraphQLList(Todo),
-      resolve: ({ id }, _args, { db }) => {
-        return db.todos.where({ projectId: id }).models.map(model => model.attrs);
+      resolve: ({ id }, _args, { schema }) => {
+        return schema.todos.where({ projectId: id }).models.map(model => model.attrs);
       }
     }
   })
@@ -36,14 +37,17 @@ const Todo = new GraphQLObjectType({
   })
 });
 
+
+// QUERIES
+
 const rootQuery = new GraphQLObjectType({
   name: 'RootQuery',
   fields: () => ({
     projects: {
       type: new GraphQLList(Project),
-      resolve: (_parent, _args, { db }) => {
+      resolve: (_parent, _args, { schema }) => {
         console.log(`Reading all projects from database`);
-        return db.projects.all().models.map(model => model.attrs);
+        return schema.projects.all().models.map(model => model.attrs);
       }
     },
     project: {
@@ -54,9 +58,36 @@ const rootQuery = new GraphQLObjectType({
           description: 'The project ID for the desired project'
         }
       },
-      resolve: (_parent, { id }, { db }) => {
+      resolve: (_parent, { id }, { schema }) => {
         console.log(`Reading project ${id} from database`);
-        return db.projects.find(id).attrs;
+        return schema.projects.find(id).attrs;
+      }
+    }
+  })
+});
+
+
+// SUBSCRIPTIONS
+
+const rootSubscription = new GraphQLObjectType({
+  name: 'RootSubscription',
+  fields: () => ({
+    project: {
+      type: Project,
+      args: {
+        id: {
+          type: new GraphQLNonNull(GraphQLID),
+          description: 'The unique project id'
+        }
+      }
+    },
+    projectTodos: {
+      type: new GraphQLList(Todo),
+      args: {
+        project_id: {
+          type: new GraphQLNonNull(GraphQLID),
+          description: 'The unique project id'
+        }
       }
     }
   })
@@ -68,8 +99,37 @@ const rootQuery = new GraphQLObjectType({
 const rootMutation = new GraphQLObjectType({
   name: 'RootMutation',
   fields: () => ({
+    createTodo: {
+      type: GraphQLBoolean,
+      description: 'Create a new todo',
+      args: {
+        project_id: {
+          type: new GraphQLNonNull(GraphQLID),
+          description: 'The id of the project this todo will belong to'
+        },
+        description: {
+          type: GraphQLString,
+          description: 'The description of the new todo'
+        }
+      },
+      resolve(_parent, { project_id, description }, { schema, socketServer }) {
+        const todo = schema.create('todo', { projectId: project_id, description });
+
+        // In real life, notifying websockets would likely go somewhere else
+        const message = {
+          topic: `projectTodos:${project_id}`,
+          data: {
+            type: 'add',
+            objects: [{ id: todo.attrs.id, description: todo.attrs.description }]
+          }
+        }
+        socketServer.send(message);
+
+        return true;
+      }
+    },
     createProject: {
-      type: Project,
+      type: GraphQLBoolean,
       description: 'Create a new project',
       args: {
         name: {
@@ -81,13 +141,13 @@ const rootMutation = new GraphQLObjectType({
           description: 'The description of the new project'
         }
       },
-      resolve(_parent, { name, description }, { db }) {
+      resolve(_parent, { name, description }, { schema }) {
         console.log(`Creating project in database`);
-        return db.create('project', { name, description }).attrs;
+        return schema.create('project', { name, description }).attrs;
       }
     },
     updateProject: {
-      type: Project,
+      type: GraphQLBoolean,
       description: 'Update an existing project',
       args: {
         id: {
@@ -103,9 +163,9 @@ const rootMutation = new GraphQLObjectType({
           description: 'The updated description of the project'
         }
       },
-      resolve(_parent, { id, name, description }, { db }) {
+      resolve(_parent, { id, name, description }, { schema }) {
         console.log(`Updating project ${id} in database`);
-        return db.projects.find(id).update({ name, description });
+        return schema.projects.find(id).update({ name, description });
       }
     },
     deleteProject: {
@@ -117,9 +177,9 @@ const rootMutation = new GraphQLObjectType({
           description: 'The project ID'
         }
       },
-      resolve(_parent, { id }, { db }) {
+      resolve(_parent, { id }, { schema }) {
         console.log(`Deleting project ${id} from database`);
-        db.projects.find(id).destroy();
+        schema.projects.find(id).destroy();
         return true;
       }
     }
@@ -131,5 +191,6 @@ const rootMutation = new GraphQLObjectType({
 
 export default new GraphQLSchema({
   query: rootQuery,
-  mutation: rootMutation
+  mutation: rootMutation,
+  subscription: rootSubscription
 });
