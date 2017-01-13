@@ -15,7 +15,7 @@
   "scripts": {
     "build": "ember build",
     "postversion": "git push && git push --tags",
-    "preversion": "git checkout master && git pull && npm test",
+    "preversion": "git checkout master && git pull && yarn test",
     "start": "ember server",
     "test": "ember try:each"
   },
