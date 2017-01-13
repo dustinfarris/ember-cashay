@@ -3,6 +3,16 @@
 
 ## Current
 
+- [#32](https://github.com/dustinfarris/ember-cashay/pull/32)
+  Support for live fields
+  [@dustinfarris](https://github.com/dustinfarris)
+- [#29](https://github.com/dustinfarris/ember-cashay/pull/29)
+  Yarn
+  [@dustinfarris](https://github.com/dustinfarris)
+
+
+## 0.5.1
+
 - [#26](https://github.com/dustinfarris/ember-cashay/pull/26)
   Fix typo in treeForVendor
   [@dustinfarris](https://github.com/dustinfarris)
