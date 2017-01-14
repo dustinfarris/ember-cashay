@@ -9,6 +9,17 @@ var path = require('path');
 
 var WebpackWriter = require('broccoli-webpack');
 
+
+// TODO: Remove this polyfill once node 0.12.x support is no longer needed
+//       (Twiddle currently uses 0.12)
+if (!String.prototype.startsWith) {
+    String.prototype.startsWith = function(searchString, position) {
+        position = position || 0;
+        return this.substr(position, searchString.length) === searchString;
+    };
+}
+
+
 module.exports = {
   name: 'ember-cashay',
 
