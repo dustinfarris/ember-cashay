@@ -2,7 +2,7 @@ machine:
   node:
     version: "stable"
   environment:
-    YARN_VERSION: 0.18.1
+    YARN_VERSION: 0.19.1
     PATH: "${PATH}:${HOME}/.yarn/bin:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
 
 dependencies:
