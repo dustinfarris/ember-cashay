@@ -30,14 +30,15 @@ export const waitForSubscriptions = function() {
       // will have to manually check cachedSubscriptions
 
       // response could be undefined if it was flushed
-      if (!response || response.status !== "loading") {
+      if (!response || response.status !== "loading" || response.error) {
         return false;
       } else {
         // Taking the first field, hopefully the only one
         let fieldName = Object.keys(response.data)[0];
         let field = response.data[fieldName];
 
-        let cachedSubscription = cashay.cachedSubscriptions[`${fieldName}::${field.id}`];
+        let subscriptionKey = key ? `${fieldName}::${key}` : fieldName;
+        let cachedSubscription = cashay.cachedSubscriptions[subscriptionKey];
 
         if (cachedSubscription && cachedSubscription.status === "ready") {
           // This is just a live query, we do not need to hold anything up
