@@ -3,6 +3,23 @@
 
 ## Current
 
+- [#37](https://github.com/dustinfarris/ember-cashay/pull/37)
+  Test waiter fixes/improvements
+  [@dustinfarris](https://github.com/dustinfarris)
+- [#36](https://github.com/dustinfarris/ember-cashay/pull/36)
+  Bump yarn version
+  [@dustinfarris](https://github.com/dustinfarris)
+
+
+## 0.6.1
+
+- [#34](https://github.com/dustinfarris/ember-cashay/pull/34)
+  Downgrade ember-fetch
+  [@dustinfarris](https://github.com/dustinfarris)
+
+
+## 0.6.0
+
 - [#32](https://github.com/dustinfarris/ember-cashay/pull/32)
   Support for live fields
   [@dustinfarris](https://github.com/dustinfarris)
