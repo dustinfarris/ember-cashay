@@ -30,7 +30,7 @@ export const waitForSubscriptions = function() {
       // will have to manually check cachedSubscriptions
 
       // response could be undefined if it was flushed
-      if (!response || response.status !== "loading") {
+      if (!response || response.status !== "loading" || response.error) {
         return false;
       } else {
         // Taking the first field, hopefully the only one
