@@ -37,7 +37,8 @@ export const waitForSubscriptions = function() {
         let fieldName = Object.keys(response.data)[0];
         let field = response.data[fieldName];
 
-        let cachedSubscription = cashay.cachedSubscriptions[`${fieldName}::${field.id}`];
+        let subscriptionKey = key ? `${fieldName}::${key}` : fieldName;
+        let cachedSubscription = cashay.cachedSubscriptions[subscriptionKey];
 
         if (cachedSubscription && cachedSubscription.status === "ready") {
           // This is just a live query, we do not need to hold anything up
