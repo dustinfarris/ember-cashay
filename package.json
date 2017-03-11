@@ -43,7 +43,7 @@
     "ember-graphql-shim": "0.1.0",
     "ember-load-initializers": "^0.6.1",
     "ember-redux": "toranb/ember-redux",
-    "ember-resolver": "^2.0.3",
+    "ember-resolver": "^3.0.0",
     "graphql": "0.7.1",
     "loader.js": "^4.0.10",
     "mock-socket": "^6.0.4",
