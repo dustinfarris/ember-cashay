@@ -41,7 +41,7 @@
     "ember-disable-prototype-extensions": "^1.1.0",
     "ember-export-application-global": "^1.0.5",
     "ember-graphql-shim": "0.1.0",
-    "ember-load-initializers": "^0.6.1",
+    "ember-load-initializers": "^1.0.0",
     "ember-redux": "toranb/ember-redux",
     "ember-resolver": "^3.0.0",
     "graphql": "0.7.1",
