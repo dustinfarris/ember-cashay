@@ -22,7 +22,7 @@
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
     "cashay": "^0.22.1",
-    "ember-ajax": "^2.4.1",
+    "ember-ajax": "^3.0.0",
     "ember-browserify": "^1.1.13",
     "ember-changeset": "1.2.3",
     "ember-cli": "2.10.0",
