@@ -46,7 +46,7 @@
     "ember-resolver": "^4.0.0",
     "graphql": "0.7.1",
     "loader.js": "^4.0.10",
-    "mock-socket": "^6.0.4",
+    "mock-socket": "^6.1.0",
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0"
   },
